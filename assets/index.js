@@ -44,7 +44,7 @@ const summary = {
   device,
   intro,
   software,
-  performance
+  hardware
 }
 
 // Listen for input changes and update specs object accordingly

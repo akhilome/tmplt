@@ -3,6 +3,7 @@ const getValue = id => document.getElementById(id).value;
 
 // Device Specifications
 const specs = {
+  device,
   gsm,
   hspa,
   lte,
@@ -38,9 +39,30 @@ const specs = {
   extras
 }
 
+// Summary
+const summary = {
+  device,
+  intro,
+  software,
+  performance
+}
+
 // Listen for input changes and update specs object accordingly
-document.querySelectorAll('input').forEach(e => e.addEventListener('change', function() {
+document.querySelectorAll('input').forEach(e => e.addEventListener('keyup', function() {
   for (const key in specs) {
     specs[key] = getValue(`${key}`);
   }
 }));
+
+document.querySelectorAll('textarea').forEach(e => e.addEventListener('keyup', function() {
+  for (const key in summary) {
+    summary[key] = getValue(`${key}`);
+  }
+}));
+
+// Prep download button everytime a key is hit
+document.querySelector('html').addEventListener('keyup', function() {
+  const data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({specs, summary}));
+  done.href = `data:${data}`;
+  done.download = `${specs.device || summary.device}.json`;
+});

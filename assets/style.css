@@ -1,1 +1,85 @@
-/* Styles will go here */
+html {
+  color: #666;
+  font-family: sans-serif;
+}
+
+section {
+  margin: 0 auto 20px;
+  padding: 10px;
+}
+
+.title {
+  background: #2eb8b3;
+  background: linear-gradient(45deg,#02cbfb,#0066cc);
+  margin-bottom: 2rem;
+  padding: 4rem 2rem;
+}
+
+input,
+label {
+  display: block;
+}
+
+label {
+  color: #666;
+  margin: 20px auto;
+  font-size: 16px;
+}
+
+input,
+textarea {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #333;
+  font-size: 14px;
+  padding: 8px 12px;
+}
+
+input#device {
+  font-size: 1.5em;
+  margin: 20px auto;
+  text-align: center;
+  width: 50%;
+}
+
+textarea {
+  height: 150px;
+  width: 90%;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+h1,
+h2, 
+h3 {
+  color: #2eb8b3;
+  margin: 15px auto;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+.summary h2 {
+  text-align: center;
+}
+
+
+button.done {
+  text-transform: lowercase;
+  font-size: 24px;
+  display: block;
+  margin: 20px auto;
+}

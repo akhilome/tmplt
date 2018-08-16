@@ -39,10 +39,23 @@ const specs = {
   extras
 }
 
+// Summary
+const summary = {
+  intro,
+  software,
+  hardware
+}
+
 // Listen for input changes and update specs object accordingly
 document.querySelectorAll('input').forEach(e => e.addEventListener('keyup', function() {
   for (const key in specs) {
     specs[key] = getValue(`${key}`);
+  }
+}));
+
+document.querySelectorAll('textarea').forEach(e => e.addEventListener('keyup', function() {
+  for (const key in summary) {
+    summary[key] = getValue(`${key}`);
   }
 }));
 
@@ -51,7 +64,7 @@ const done = document.querySelector('#done');
 
 // Prep download button everytime a key is hit
 document.querySelector('html').addEventListener('keyup', function() {
-  const data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(specs));
+  const data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({specs, summary}));
   done.href = `data:${data}`;
   done.download = `${specs.device}.json`;
 });

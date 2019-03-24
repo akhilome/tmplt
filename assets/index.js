@@ -1,4 +1,4 @@
-const API = 'http://localhost:5500/api/v1';
+const API = 'https://tvng.herokuapp.com/api/v1';
 
 // Helper Function
 const getValue = id => document.getElementById(id).value;

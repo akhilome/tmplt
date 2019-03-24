@@ -68,6 +68,19 @@ document.querySelectorAll('textarea').forEach(e =>
 const toggleLoadingState = () =>
   document.querySelector('.loader-container').classList.toggle('show');
 
+const modalContainer = document.querySelector('.modal-container');
+const showModal = () => modalContainer.classList.add('show');
+const closeModal = () => modalContainer.classList.remove('show');
+
+const updateModalContent = ({ message, articleId = '#' }) => {
+  const messageModal = document.querySelector('.message-modal');
+  messageModal.querySelector('h5').innerText = message;
+  messageModal.querySelector('#article-id').value = articleId;
+};
+
+// close modal
+document.querySelector('#close-modal').onclick = closeModal;
+
 // Get Download button
 const done = document.querySelector('#done');
 
@@ -83,10 +96,18 @@ const saveArticle = () => {
       return res.json();
     })
     .then(response => {
-      setTimeout(() => {
-        toggleLoadingState();
-        console.log('🔥', response);
-      }, 3000);
+      const handleResponse = () => {
+        if (response.success) {
+          const { message, id: articleId } = response;
+          updateModalContent({ message, articleId });
+          toggleLoadingState();
+          showModal();
+        } else {
+          toggleLoadingState();
+          console.log('something went wrong');
+        }
+      };
+      setTimeout(handleResponse, 500);
     })
     .catch(e => console.error(e));
 };

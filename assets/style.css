@@ -81,7 +81,7 @@ h3 {
   text-align: center;
 }
 
-button.done {
+#done {
   text-transform: lowercase;
   font-size: 24px;
   display: block;

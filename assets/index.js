@@ -83,7 +83,7 @@ document.querySelector('#close-modal').onclick = closeModal;
 const done = document.querySelector('#done');
 
 // Hit API
-const saveArticle = () => {
+const saveArticle = async () => {
   const emptyFields = [
     ...Object.keys(specs).filter(e => !specs[e]),
     ...Object.keys(summary).filter(e => !summary[e])
@@ -96,35 +96,23 @@ const saveArticle = () => {
   ) {
     return console.warn('incomplete entries');
   }
-
   toggleLoadingState();
   try {
-    fetch(`${API}/articles`, {
+    const data = await fetch(`${API}/articles`, {
       method: 'POST',
       body: JSON.stringify({ title: specs.device, specs, summary }),
       headers: { 'Content-Type': 'application/json' }
-    })
-      .then(res => {
-        return res.json();
-      })
-      .then(response => {
-        const handleResponse = () => {
-          if (response.success) {
-            const { message, id: articleId } = response;
-            updateModalContent({ message, articleId });
-            toggleLoadingState();
-            showModal();
-          } else {
-            toggleLoadingState();
-            console.warn('something went wrong');
-          }
-        };
-        setTimeout(handleResponse, 500);
-      })
-      .catch(e => {
-        console.error(e);
-        clearLoader();
-      });
+    });
+    const response = await data.json();
+    if (response.success) {
+      const { message, id: articleId } = response;
+      updateModalContent({ message, articleId });
+      toggleLoadingState();
+      showModal();
+    } else {
+      toggleLoadingState();
+      console.warn('something went wrong');
+    }
   } catch (e) {
     console.error(e);
     clearLoader();

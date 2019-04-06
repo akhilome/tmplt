@@ -4,17 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/css/normalize.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>tmplt.</title>
   </head>
   <body>
@@ -28,248 +19,237 @@
         <button id="close-modal">close</button>
       </div>
     </div>
-    <section class="title container-fluid">
+    <section class="title">
       <input id="device" type="text" placeholder="Device Name" />
     </section>
-    <section class="specs container">
-      <div class="row">
-        <div class="col-md-4">
-          <h3>Design &amp; Display</h3>
-          <label
-            >Dimensions
-            <input
-              type="text"
-              id="dimensions"
-              placeholder="149.9 x 70.8 x 7.7 mm"
-            />
-          </label>
-          <label
-            >Weight
-            <input type="text" id="weight" placeholder="159g" />
-          </label>
-          <label
-            >Build
-            <input type="text" id="build" placeholder="Metal" />
-          </label>
-          <label
-            >Colors
-            <input type="text" id="colors" placeholder="Black, Blue, Gold" />
-          </label>
-          <label
-            >Display Size
-            <input type="text" id="displaySize" placeholder="5.6 inches" />
-          </label>
-          <label
-            >Display Type
-            <input
-              type="text"
-              id="displayType"
-              placeholder="IPS LCD Touchscreen"
-            />
-          </label>
-          <label
-            >Display Resolution
-            <input
-              type="text"
-              id="displayResolution"
-              placeholder="1080 x 2160 pixels"
-            />
-          </label>
-          <label
-            >Display Protection
-            <input
-              type="text"
-              id="displayProtection"
-              placeholder="Corninng Gorilla Glass 3"
-            />
-          </label>
-        </div>
-
-        <div class="col-md-4">
-          <h3>Performance &amp; Hardware</h3>
-          <label
-            >Processor Name
-            <input
-              type="text"
-              id="processorName"
-              placeholder="Qualcomm Snapdragon 660"
-            />
-          </label>
-          <label
-            >Processor Type
-            <input
-              type="text"
-              id="processorType"
-              placeholder="1.6GHz Octa-core CPU"
-            />
-          </label>
-          <label
-            >GPU
-            <input type="text" id="gpu" placeholder="Adreno 560" />
-          </label>
-          <label
-            >RAM
-            <input type="text" id="ram" placeholder="3GB / 4GB" />
-          </label>
-          <label
-            >Internal Memory
-            <input type="text" id="rom" placeholder="32GB / 64GB" />
-          </label>
-          <label
-            >SD Card Support
-            <input
-              type="text"
-              id="sdCardSupport"
-              placeholder="Yes (up to 256GB)"
-            />
-          </label>
-        </div>
-
-        <div class="col-md-4">
-          <h3>Connectivity &amp; Multimedia</h3>
-          <label
-            >Bluetooth
-            <input type="text" id="bluetooth" placeholder="Yes (v5.0)" />
-          </label>
-          <label
-            >WiFi
-            <input
-              type="text"
-              id="wifi"
-              placeholder="Yes (802.11 a/b/g/n/ac)"
-            />
-          </label>
-          <label
-            >GPS
-            <input type="text" id="gps" placeholder="Yes" />
-          </label>
-          <label
-            >USB
-            <input type="text" id="usb" placeholder="USB C" />
-          </label>
-          <label
-            >OTG
-            <input type="text" id="otg" placeholder="Yes" />
-          </label>
-          <label
-            >FM Radio
-            <input type="text" id="fm" placeholder="Yes" />
-          </label>
-          <label
-            >Headphone Jack
-            <input type="text" id="headphone" placeholder="Yes" />
-          </label>
-        </div>
+    <section class="specs">
+      <div>
+        <h3>Network &amp; Software</h3>
+        <label
+          >2G
+          <input type="text" id="gsm" placeholder="Yes" />
+        </label>
+        <label
+          >3G
+          <input type="text" id="hspa" placeholder="Yes" />
+        </label>
+        <label
+          >4G
+          <input type="text" id="lte" placeholder="Yes" />
+        </label>
+        <label
+          >SIM
+          <input type="text" id="sim" placeholder="Dual SIM" />
+        </label>
+        <label
+          >Operating System
+          <input type="text" id="os" placeholder="Android v8.0" />
+        </label>
+      </div>
+      <div>
+        <h3>Design</h3>
+        <label
+          >Dimensions
+          <input
+            type="text"
+            id="dimensions"
+            placeholder="149.9 x 70.8 x 7.7 mm"
+          />
+        </label>
+        <label
+          >Weight
+          <input type="text" id="weight" placeholder="159g" />
+        </label>
+        <label
+          >Build
+          <input type="text" id="build" placeholder="Metal" />
+        </label>
+        <label
+          >Colors
+          <input type="text" id="colors" placeholder="Black, Blue, Gold" />
+        </label>
       </div>
 
-      <div class="row">
-        <div class="col">
-          <h3>Network &amp; Software</h3>
-          <label
-            >2G
-            <input type="text" id="gsm" placeholder="Yes" />
-          </label>
-          <label
-            >3G
-            <input type="text" id="hspa" placeholder="Yes" />
-          </label>
-          <label
-            >4G
-            <input type="text" id="lte" placeholder="Yes" />
-          </label>
-          <label
-            >SIM
-            <input type="text" id="sim" placeholder="Dual SIM" />
-          </label>
-          <label
-            >Operating System
-            <input type="text" id="os" placeholder="Android v8.0" />
-          </label>
-        </div>
+      <div>
+        <h3>Display</h3>
+        <label
+          >Display Size
+          <input type="text" id="displaySize" placeholder="5.6 inches" />
+        </label>
+        <label
+          >Display Type
+          <input
+            type="text"
+            id="displayType"
+            placeholder="IPS LCD Touchscreen"
+          />
+        </label>
+        <label
+          >Display Resolution
+          <input
+            type="text"
+            id="displayResolution"
+            placeholder="1080 x 2160 pixels"
+          />
+        </label>
+        <label
+          >Display Protection
+          <input
+            type="text"
+            id="displayProtection"
+            placeholder="Corninng Gorilla Glass 3"
+          />
+        </label>
+      </div>
 
-        <div class="col">
-          <h3>Cameras</h3>
-          <label
-            >Front Camera
-            <input
-              type="text"
-              id="frontCamera"
-              placeholder="16 MP (f/1.9, LED flash)"
-            />
-          </label>
-          <label
-            >Rear Camera
-            <input
-              type="text"
-              id="rearCamera"
-              placeholder="16 MP (f/1.9, LED flash)"
-            />
-          </label>
+      <div>
+        <h3>Performance &amp; Hardware</h3>
+        <label
+          >Processor Name
+          <input
+            type="text"
+            id="processorName"
+            placeholder="Qualcomm Snapdragon 660"
+          />
+        </label>
+        <label
+          >Processor Type
+          <input
+            type="text"
+            id="processorType"
+            placeholder="1.6GHz Octa-core CPU"
+          />
+        </label>
+        <label
+          >GPU
+          <input type="text" id="gpu" placeholder="Adreno 560" />
+        </label>
+        <label
+          >RAM
+          <input type="text" id="ram" placeholder="3GB / 4GB" />
+        </label>
+        <label
+          >Internal Memory
+          <input type="text" id="rom" placeholder="32GB / 64GB" />
+        </label>
+        <label
+          >SD Card Support
+          <input
+            type="text"
+            id="sdCardSupport"
+            placeholder="Yes (up to 256GB)"
+          />
+        </label>
+      </div>
 
-          <h3>Battery</h3>
-          <label
-            >Battery Capacity
-            <input type="text" id="batteryCapacity" placeholder="3000 mAh" />
-          </label>
-          <label
-            >Type
-            <input type="text" id="batteryType" placeholder="Li-Ion" />
-          </label>
-          <label
-            >Fast Charging
-            <input type="text" id="fastCharging" placeholder="Yes" />
-          </label>
-        </div>
+      <div>
+        <h3>Cameras</h3>
+        <label
+          >Front Camera
+          <input
+            type="text"
+            id="frontCamera"
+            placeholder="16 MP (f/1.9, LED flash)"
+          />
+        </label>
+        <label
+          >Rear Camera
+          <input
+            type="text"
+            id="rearCamera"
+            placeholder="16 MP (f/1.9, LED flash)"
+          />
+        </label>
+        <h3>Battery</h3>
+        <label
+          >Battery Capacity
+          <input type="text" id="batteryCapacity" placeholder="3000 mAh" />
+        </label>
+        <label
+          >Type
+          <input type="text" id="batteryType" placeholder="Li-Ion" />
+        </label>
+        <label
+          >Fast Charging
+          <input type="text" id="fastCharging" placeholder="Yes" />
+        </label>
 
-        <div class="col">
-          <h3>Other Features</h3>
-          <label
-            >Fingerprint Reader
-            <input type="text" id="fingerprint" placeholder="Yes" />
-          </label>
-          <label
-            >Extras
-            <input
-              type="text"
-              id="extras"
-              placeholder="Face Unlock, ANC, Dolby Atmos Sound, e.t.c"
-            />
-          </label>
-        </div>
+        <h3>Others</h3>
+        <label
+          >Fingerprint Reader
+          <input type="text" id="fingerprint" placeholder="Yes" />
+        </label>
+        <label
+          >Extras
+          <input
+            type="text"
+            id="extras"
+            placeholder="Face Unlock, ANC, Dolby Atmos Sound, e.t.c"
+          />
+        </label>
+      </div>
+
+      <div>
+        <h3>Connectivity &amp; Multimedia</h3>
+        <label
+          >Bluetooth
+          <input type="text" id="bluetooth" placeholder="Yes (v5.0)" />
+        </label>
+        <label
+          >WiFi
+          <input type="text" id="wifi" placeholder="Yes (802.11 a/b/g/n/ac)" />
+        </label>
+        <label
+          >GPS
+          <input type="text" id="gps" placeholder="Yes" />
+        </label>
+        <label
+          >USB
+          <input type="text" id="usb" placeholder="USB C" />
+        </label>
+        <label
+          >OTG
+          <input type="text" id="otg" placeholder="Yes" />
+        </label>
+        <label
+          >FM Radio
+          <input type="text" id="fm" placeholder="Yes" />
+        </label>
+        <label
+          >Headphone Jack
+          <input type="text" id="headphone" placeholder="Yes" />
+        </label>
       </div>
     </section>
-
-    <section class="summary container-fluid">
+    <section class="summary">
       <h2>Summary</h2>
 
-      <div class="row">
-        <div class="col-md-4">
-          <h3>Intro</h3>
-          <textarea
-            id="intro"
-            placeholder="The intro paragraphs go here"
-          ></textarea>
-        </div>
-
-        <div class="col-md-4">
-          <h3>Software, Design, Display</h3>
-          <textarea
-            id="software"
-            placeholder="Talk about the software features, the device's overall design, and the display features"
-          ></textarea>
-        </div>
-
-        <div class="col-md-4">
-          <h3>Performance, Cameras, Hardware</h3>
-          <textarea
-            id="hardware"
-            placeholder="Similarly, talk about the performance and hardware, cameras, battery and other features in this section"
-          ></textarea>
-        </div>
+      <div>
+        <h3>Intro</h3>
+        <textarea
+          id="intro"
+          placeholder="The intro paragraphs go here"
+        ></textarea>
       </div>
 
-      <button type="button" id="done" class="btn btn-success">save</button>
+      <div>
+        <h3>Software, Design, Display</h3>
+        <textarea
+          id="software"
+          placeholder="Talk about the software features, the device's overall design, and the display features"
+        ></textarea>
+      </div>
+
+      <div>
+        <h3>Performance, Cameras, Hardware</h3>
+        <textarea
+          id="hardware"
+          placeholder="Similarly, talk about the performance and hardware, cameras, battery and other features in this section"
+        ></textarea>
+      </div>
     </section>
+
+    <button type="button" id="done">save</button>
 
     <script src="assets/index.js"></script>
   </body>

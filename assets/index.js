@@ -84,6 +84,19 @@ const done = document.querySelector('#done');
 
 // Hit API
 const saveArticle = () => {
+  const emptyFields = [
+    ...Object.keys(specs).filter(e => !specs[e]),
+    ...Object.keys(summary).filter(e => !summary[e])
+  ];
+
+  if (
+    Object.keys(specs).length !== 34 ||
+    Object.keys(summary).length !== 3 ||
+    emptyFields.length
+  ) {
+    return console.warn('incomplete entries');
+  }
+
   toggleLoadingState();
   try {
     fetch(`${API}/articles`, {

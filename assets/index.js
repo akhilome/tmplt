@@ -1,67 +1,64 @@
 const API = 'https://tvng.herokuapp.com/api/v1';
 
-// Helper Function
+// Helper Functions
+const getInputField = id => document.getElementById(id);
 const getValue = id => document.getElementById(id).value;
 
-// Device Specifications
-const specs = {
-  device,
-  gsm,
-  hspa,
-  lte,
-  sim,
-  os,
-  dimensions,
-  weight,
-  build,
-  colors,
-  displaySize,
-  displayType,
-  displayResolution,
-  displayProtection,
-  processorName,
-  processorType,
-  gpu,
-  ram,
-  rom,
-  sdCardSupport,
-  frontCamera,
-  rearCamera,
-  batteryCapacity,
-  batteryType,
-  fastCharging,
-  bluetooth,
-  wifi,
-  gps,
-  usb,
-  otg,
-  fm,
-  headphone,
-  fingerprint,
-  extras
+let specs = {};
+let summary = {};
+
+// Populate input fields from localStorage
+(() => {
+  console.log('Populating ....', '🤞🏾');
+  const store = JSON.parse(localStorage.getItem('store'));
+  if (!store || !store.specs || !store.summary)
+    return console.log('Nothing to populate 🙁');
+  specs = { ...store.specs };
+  summary = { ...store.summary };
+  Object.keys(store.specs).forEach(
+    e => (getInputField(e).value = store.specs[e])
+  );
+  Object.keys(store.summary).forEach(
+    e => (getInputField(e).value = store.summary[e])
+  );
+  console.log('Populated', '🔥🔥🔥🔥');
+})();
+
+const store = JSON.parse(localStorage.getItem('store')) || {
+  specs: null,
+  summary: null
 };
 
-// Summary
-const summary = {
-  intro,
-  software,
-  hardware
+const updateLocalStorage = () => {
+  localStorage.setItem(
+    'store',
+    JSON.stringify({
+      specs: { ...store.specs },
+      summary: { ...store.summary }
+    })
+  );
 };
 
 // Listen for input changes and update specs object accordingly
-document.querySelectorAll('input').forEach(e =>
-  e.addEventListener('keyup', function() {
-    for (const key in specs) {
-      specs[key] = getValue(`${key}`);
-    }
+document.querySelectorAll('input:not(#article-id)').forEach(e =>
+  e.addEventListener('keyup', e => {
+    const {
+      target: { id: key }
+    } = e;
+    specs[key] = getValue(key);
+    store.specs = { ...specs };
+    updateLocalStorage();
   })
 );
 
 document.querySelectorAll('textarea').forEach(e =>
-  e.addEventListener('keyup', function() {
-    for (const key in summary) {
-      summary[key] = getValue(`${key}`);
-    }
+  e.addEventListener('keyup', e => {
+    const {
+      target: { id: key }
+    } = e;
+    summary[key] = getValue(key);
+    store.summary = { ...summary };
+    updateLocalStorage();
   })
 );
 

@@ -9,7 +9,8 @@ let summary = {};
 
 // Populate input fields from localStorage
 (() => {
-  console.log('Populating ....', '🤞🏾');
+  console.groupCollapsed('populate 🤞🏾');
+  console.log('populating...');
   const store = JSON.parse(localStorage.getItem('store'));
   if (!store || !store.specs || !store.summary)
     return console.log('Nothing to populate 🙁');
@@ -21,46 +22,53 @@ let summary = {};
   Object.keys(store.summary).forEach(
     e => (getInputField(e).value = store.summary[e])
   );
-  console.log('Populated', '🔥🔥🔥🔥');
+  console.log('populated 🔥🔥🔥');
+  console.groupEnd();
 })();
 
-const store = JSON.parse(localStorage.getItem('store')) || {
-  specs: null,
-  summary: null
-};
-
-const updateLocalStorage = () => {
+const updateLocalStorage = () =>
   localStorage.setItem(
     'store',
     JSON.stringify({
-      specs: { ...store.specs },
-      summary: { ...store.summary }
+      specs: { ...specs },
+      summary: { ...summary }
     })
   );
-};
+
+const inputNodes = document.querySelectorAll('input:not(#article-id)');
+const textAreaNodes = document.querySelectorAll('textarea');
 
 // Listen for input changes and update specs object accordingly
-document.querySelectorAll('input:not(#article-id)').forEach(e =>
+inputNodes.forEach(e =>
   e.addEventListener('keyup', e => {
     const {
       target: { id: key }
     } = e;
     specs[key] = getValue(key);
-    store.specs = { ...specs };
     updateLocalStorage();
   })
 );
 
-document.querySelectorAll('textarea').forEach(e =>
+textAreaNodes.forEach(e =>
   e.addEventListener('keyup', e => {
     const {
       target: { id: key }
     } = e;
     summary[key] = getValue(key);
-    store.summary = { ...summary };
     updateLocalStorage();
   })
 );
+
+const forceSync = () => {
+  console.groupCollapsed('sync 🤟🏾');
+  console.log('syncing...');
+  textAreaNodes.forEach(node => (summary[node.id] = node.value));
+  inputNodes.forEach(node => (specs[node.id] = node.value));
+  updateLocalStorage();
+  console.log('done syncing 🔥🔥🔥');
+  console.groupEnd();
+  return true;
+};
 
 const loader = document.querySelector('.loader-container');
 const toggleLoadingState = () => loader.classList.toggle('show');
@@ -121,6 +129,7 @@ const saveArticle = async () => {
 };
 
 done.onclick = () =>
+  forceSync() &&
   Swal.fire({
     title: 'Are you sure?',
     text: 'This operation permanently saves the article to the database',

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300i,400&display=swap');
+
 html {
   color: #666;
   font-family: sans-serif;
@@ -5,7 +7,7 @@ html {
 
 body {
   border: 5px solid #2eb8b3;
-  font-family: 'Dank Mono', 'San Francisco', 'Helvetica', sans-serif;
+  font-family: 'Dank Mono', 'IBM Plex Mono', 'Helvetica', sans-serif;
 }
 
 section {
@@ -34,7 +36,7 @@ label {
   color: #666;
   font-size: 14px;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: -1px;
   margin: 10px auto;
 }
@@ -83,7 +85,7 @@ h1,
 h2,
 h3 {
   color: #2eb8b3;
-  font-weight: bold;
+  font-weight: normal;
   letter-spacing: -1px;
   margin: 10px auto;
 }
@@ -175,7 +177,7 @@ h3 {
 .loader-container,
 .modal-container {
   align-items: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
   display: none;
   height: 100vh;
   justify-content: center;

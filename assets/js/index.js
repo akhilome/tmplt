@@ -94,7 +94,8 @@ const saveArticle = async () => {
     Object.keys(summary).length !== 3 ||
     emptyFields.length
   ) {
-    return console.warn('incomplete entries');
+    console.warn('incomplete entries');
+    return false;
   }
   toggleLoadingState();
   try {
@@ -122,12 +123,21 @@ const saveArticle = async () => {
 done.onclick = () =>
   Swal.fire({
     title: 'Are you sure?',
-    text: 'This operation saves the article to the database',
+    text: 'This operation permanently saves the article to the database',
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#2eb8b3',
-    cancelButtonColor: '#d33',
+    cancelButtonColor: '#b82e33',
     confirmButtonText: 'Yes, save it!'
-  }).then(result => {
-    if (result.value) saveArticle();
+  }).then(async result => {
+    if (result.value) {
+      (await saveArticle()) === false
+        ? Swal.fire({
+            text: 'Some fields are missing',
+            type: 'error',
+            confirmButtonColor: '#2eb8b3',
+            confirmButtonText: 'Confirm & Try Again 🤞🏾'
+          })
+        : undefined;
+    }
   });

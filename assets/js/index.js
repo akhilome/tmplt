@@ -84,8 +84,18 @@ const updateModalContent = ({ message, articleId = '#' }) => {
   messageModal.querySelector('#article-id').value = articleId;
 };
 
-// close modal
-document.querySelector('#close-modal').onclick = closeModal;
+// close modal & copy id
+document.querySelector('#close-modal').onclick = () => {
+  document.getElementById('article-id').select();
+  document.execCommand('copy');
+  closeModal();
+  Swal.fire({
+    text: 'Article Id copied to clipboard',
+    type: 'success',
+    confirmButtonColor: '#2eb8b3',
+    confirmButtonText: 'Done 💪🏾'
+  });
+};
 
 // Get Download button
 const done = document.querySelector('#done');

@@ -119,4 +119,15 @@ const saveArticle = async () => {
   }
 };
 
-done.onclick = saveArticle;
+done.onclick = () =>
+  Swal.fire({
+    title: 'Are you sure?',
+    text: 'This operation saves the article to the database',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#2eb8b3',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, save it!'
+  }).then(result => {
+    if (result.value) saveArticle();
+  });

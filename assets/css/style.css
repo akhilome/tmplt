@@ -177,7 +177,7 @@ h3 {
 .loader-container,
 .modal-container {
   align-items: center;
-  background: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   display: none;
   height: 100vh;
   justify-content: center;

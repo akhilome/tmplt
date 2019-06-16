@@ -1,5 +1,5 @@
-// const API = 'https://tvng.herokuapp.com/api/v1';
-const API = 'http://localhost:5500/api/v1';
+const API = 'https://tvng.herokuapp.com/api/v1';
+// const API = 'http://localhost:5500/api/v1';
 
 // Helper Functions
 const getInputField = id => document.getElementById(id);
@@ -98,6 +98,14 @@ document.querySelector('#close-modal').onclick = () => {
   });
 };
 
+const showGenericErrorModal = () =>
+  Swal.fire({
+    type: 'error',
+    text: 'something went wrong, please try again',
+    showConfirmButton: false,
+    timer: 2500
+  });
+
 // Get Download button
 const done = document.querySelector('#done');
 
@@ -113,7 +121,6 @@ const saveArticle = async () => {
     Object.keys(summary).length !== 3 ||
     emptyFields.length
   ) {
-    console.warn('incomplete entries');
     return emptyFields.length;
   }
   toggleLoadingState();
@@ -131,11 +138,11 @@ const saveArticle = async () => {
       showModal();
     } else {
       toggleLoadingState();
-      console.warn('something went wrong');
+      showGenericErrorModal();
     }
   } catch (e) {
-    console.error(e);
     clearLoader();
+    showGenericErrorModal();
   }
 };
 
@@ -152,15 +159,14 @@ done.onclick = () =>
   }).then(async result => {
     if (result.value) {
       const numMissing = await saveArticle();
-      numMissing
-        ? Swal.fire({
-            text: `${numMissing === 37 ? 'All' : numMissing} field${
-              numMissing > 1 ? 's are' : ' is'
-            } missing`,
-            type: 'error',
-            confirmButtonColor: '#2eb8b3',
-            confirmButtonText: 'Confirm & Try Again 🤞🏾'
-          })
-        : undefined;
+      numMissing &&
+        Swal.fire({
+          text: `${numMissing === 37 ? 'All' : numMissing} field${
+            numMissing > 1 ? 's are' : ' is'
+          } missing`,
+          type: 'error',
+          confirmButtonColor: '#2eb8b3',
+          confirmButtonText: 'Confirm & Try Again 🤞🏾'
+        });
     }
   });

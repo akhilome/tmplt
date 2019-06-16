@@ -1,5 +1,5 @@
 // const API = 'https://tvng.herokuapp.com/api/v1';
-const API = 'http://localhost:5500/api/v2';
+const API = 'http://localhost:5500/api/v1';
 
 // Helper Functions
 const getInputField = id => document.getElementById(id);
@@ -92,8 +92,9 @@ document.querySelector('#close-modal').onclick = () => {
   closeModal();
   Swal.fire({
     type: 'success',
-    confirmButtonColor: '#2eb8b3',
-    confirmButtonText: 'Done 💪🏾'
+    text: 'Article Id copied to clipboard',
+    showConfirmButton: false,
+    timer: 2000
   });
 };
 
@@ -143,7 +144,7 @@ done.onclick = () =>
   Swal.fire({
     title: 'Are you sure?',
     text: 'This operation permanently saves the article to the database',
-    type: 'warning',
+    type: 'question',
     showCancelButton: true,
     confirmButtonColor: '#2eb8b3',
     cancelButtonColor: '#b82e33',

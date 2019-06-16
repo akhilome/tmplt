@@ -1,4 +1,5 @@
-const API = 'https://tvng.herokuapp.com/api/v1';
+// const API = 'https://tvng.herokuapp.com/api/v1';
+const API = 'http://localhost:5500/api/v2';
 
 // Helper Functions
 const getInputField = id => document.getElementById(id);
@@ -90,7 +91,6 @@ document.querySelector('#close-modal').onclick = () => {
   document.execCommand('copy');
   closeModal();
   Swal.fire({
-    text: 'Article Id copied to clipboard',
     type: 'success',
     confirmButtonColor: '#2eb8b3',
     confirmButtonText: 'Done 💪🏾'
@@ -113,7 +113,7 @@ const saveArticle = async () => {
     emptyFields.length
   ) {
     console.warn('incomplete entries');
-    return false;
+    return emptyFields.length;
   }
   toggleLoadingState();
   try {
@@ -150,9 +150,12 @@ done.onclick = () =>
     confirmButtonText: 'Yes, save it!'
   }).then(async result => {
     if (result.value) {
-      (await saveArticle()) === false
+      const numMissing = await saveArticle();
+      numMissing
         ? Swal.fire({
-            text: 'Some fields are missing',
+            text: `${numMissing === 37 ? 'All' : numMissing} field${
+              numMissing > 1 ? 's are' : ' is'
+            } missing`,
             type: 'error',
             confirmButtonColor: '#2eb8b3',
             confirmButtonText: 'Confirm & Try Again 🤞🏾'
